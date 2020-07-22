@@ -12,8 +12,9 @@ module.exports = {
             let es = `:flag_es: Aún no has empezado tu viaje.`
             let en = `:england: You have not yet started your journey.`
             let fr = `:flag_fr: Vous n'avez pas encore commencé votre voyage.`
+            let pt = `:flag_pt: Você ainda não iniciou sua jornada.`
             
-            message.author.send(`${es}\n${en}\n${fr}\n\n<@${message.author.id}>`)
+            message.author.send(`${es}\n${en}\n${fr}\n${pt}\n\n<@${message.author.id}>`)
         }
         else {
             let role = message.guild.roles.cache.find(r => r.name === trainer.Region)
@@ -25,6 +26,7 @@ module.exports = {
                 let es = `:flag_es: ¡Felicidades! Te has verificado correctamente.`
                 let en = `:england: Congratulations! You have successfully verified yourself.`
                 let fr = `:flag_fr: Toutes nos félicitations! Vous vous êtes vérifié avec succès.`
+                let pt = `:flag_pt: Parabéns! Você se verificou com sucesso.`
 
                 message.member.roles.add(role.id)
                 message.channel.send(`${es}\n${en}\n${fr}\n\n<@${message.author.id}>`)
