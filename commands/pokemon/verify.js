@@ -1,0 +1,34 @@
+module.exports = {
+	name: 'verify',
+    description: 'Verifícate como entrenador pokémon.',
+    aliases: ['verify'],
+    guildOnly: true,
+	async execute(message, args) {
+        const Trainers = require('../../models/Trainers')
+
+        const trainer = await Trainers.findOne({ where: { User: message.author.id }, attributes: ['Region'] })
+
+        if(!trainer) {
+            let es = `:flag_es: Aún no has empezado tu viaje.`
+            let en = `:england: You have not yet started your journey.`
+            let fr = `:flag_fr: Vous n'avez pas encore commencé votre voyage.`
+            
+            message.author.send(`${es}\n${en}\n${fr}\n\n<@${message.author.id}>`)
+        }
+        else {
+            let role = message.guild.roles.cache.find(r => r.name === trainer.Region)
+
+            if(!role) message.guild.roles.create({ data: { name: trainer.Region, permissions: ['SEND_MESSAGES', 'VIEW_CHANNEL'] } })
+            else {
+                if(message.member.roles.cache.has(role.id)) return 
+
+                let es = `:flag_es: ¡Felicidades! Te has verificado correctamente.`
+                let en = `:england: Congratulations! You have successfully verified yourself.`
+                let fr = `:flag_fr: Toutes nos félicitations! Vous vous êtes vérifié avec succès.`
+
+                message.member.roles.add(role.id)
+                message.channel.send(`${es}\n${en}\n${fr}\n\n<@${message.author.id}>`)
+            }
+        }
+    }
+}
