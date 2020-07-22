@@ -29,7 +29,7 @@ module.exports = {
                 let pt = `:flag_pt: Parabéns! Você se verificou com sucesso.`
 
                 message.member.roles.add(role.id)
-                message.channel.send(`${es}\n${en}\n${fr}\n\n<@${message.author.id}>`)
+                message.channel.send(`${es}\n${en}\n${fr}\n${pt}\n\n<@${message.author.id}>`)
             }
         }
     }
