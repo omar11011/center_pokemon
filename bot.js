@@ -1,6 +1,5 @@
 const fs = require('fs')
 const discord = require('discord.js')
-const express = require('express')
 const env = require('node-env-file')
 env(__dirname + '/.env')
 
@@ -34,13 +33,3 @@ fs.readdir(`./events/`, (err, files) => {
 })
 
 client.login(process.env.TOKEN)
-
-// Express
-
-var app = express()
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000!')
-})
