@@ -9,7 +9,7 @@ client.commands = new discord.Collection()
 
 const modules = ['pokemon']
 
-// Recorriendo comandos
+// Command Handler
 
 modules.forEach(c => {
     fs.readdir(`./commands/${c}/`, (err, files) => {
@@ -22,7 +22,7 @@ modules.forEach(c => {
     })
 })
 
-// Recorriendo eventos
+// Event Handler
 
 fs.readdir(`./events/`, (err, files) => {
     if(err) return console.log(err)
@@ -34,3 +34,9 @@ fs.readdir(`./events/`, (err, files) => {
 })
 
 client.login(process.env.TOKEN)
+
+// Express
+
+const app = express()
+
+app.listen(3000, () => console.log("Express listo!"))
