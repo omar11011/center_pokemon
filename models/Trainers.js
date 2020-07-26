@@ -18,6 +18,10 @@ const Trainers = sequelize.define('Trainers', {
         type: Sequelize.STRING,
         allowNull: true,
     },
+    Language: {
+        type: Sequelize.STRING,
+        defaultValue: 'es',
+    },
     Cups: {
         type: Sequelize.INTEGER,
         defaultValue: 0,

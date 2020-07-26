@@ -18,6 +18,10 @@ module.exports = {
         }
         else {
             let role = message.guild.roles.cache.find(r => r.name === trainer.Region)
+            let trainer = message.guild.roles.cache.find(r => r.name === 'Trainer')
+
+            if(!trainer) message.guild.roles.create({ data: { name: 'Trainer', permissions: ['SEND_MESSAGES', 'VIEW_CHANNEL'] } })
+            else message.member.roles.add(trainer.id)
 
             if(!role) message.guild.roles.create({ data: { name: trainer.Region, permissions: ['SEND_MESSAGES', 'VIEW_CHANNEL'] } })
             else {
