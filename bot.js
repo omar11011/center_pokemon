@@ -8,7 +8,7 @@ const client = new discord.Client({
 });
 client.commands = new discord.Collection()
 
-const modules = ['pokemon', 'utils', 'admin']
+const modules = ['utils', 'admin']
 
 // Command Handler
 

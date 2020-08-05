@@ -14,6 +14,13 @@ module.exports = async (reaction, object, user) => {
     attributes: ['Region']
   })
 
+  const embedError = new Discord.MessageEmbed()
+    .setColor(0xffffff)
+    .setTitle("Sorry!")
+    .setDescription(`Sorry, but you must have started the adventure in the [Start](https://discord.com/channels/735352445403660288/735375680400916581 'Channel start') or other server channel to be able to enter the server.\n`)
+
+  if (!trainer) return user.send(embedError)
+
   // get the role
   let role = await object.message.guild.roles.cache.find(r => r.name === trainer.Region)
   let roletrainer = await object.message.guild.roles.cache.find(r => r.name === 'Trainer')
